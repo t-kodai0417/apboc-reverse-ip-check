@@ -1,7 +1,7 @@
 from flask import Flask,request,redirect,render_template
 import requests,random
 
-site_url=""
+site_url=""#ここにサイトのURL 例:https://test.kodai0417.repl.co
 
 app = Flask(__name__)
 
